@@ -35,7 +35,7 @@ class TasksController extends Controller
     {
         // バリデーション
         $request->validate([
-            'status' => 'required',
+            'status' => 'required|max:10',
             'content' => 'required',
         ]);
         // メッセージを作成
@@ -76,7 +76,7 @@ class TasksController extends Controller
     {
         // バリデーション
         $request->validate([
-            'status' => 'required',
+            'status' => 'required|max:10',
             'content' => 'required',
         ]);
         // idの値でメッセージを検索して取得
