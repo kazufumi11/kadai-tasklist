@@ -3,6 +3,7 @@
 @section('content')
 
 <!-- ここにページ毎のコンテンツを書く -->
+
     <div class="row">
         <div class="col-6">
             {!! Form::model($task, ['route' => 'tasks.store']) !!}

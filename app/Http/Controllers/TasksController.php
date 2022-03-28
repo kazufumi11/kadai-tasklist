@@ -24,7 +24,6 @@ class TasksController extends Controller
     public function create()
     {
         $task = new Task;
-
         // メッセージ作成ビューを表示
         return view('tasks.create', [
             'task' => $task,
@@ -34,6 +33,10 @@ class TasksController extends Controller
    // postでtasks/にアクセスされた場合の「新規登録処理」
     public function store(Request $request)
     {
+        // バリデーション
+        $request->validate([
+            'content' => 'required',
+        ]);
         // メッセージを作成
         $task = new Task;
         $task->content = $request->content;
@@ -60,7 +63,6 @@ class TasksController extends Controller
     {
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
-
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
             'task' => $task,
@@ -70,6 +72,10 @@ class TasksController extends Controller
     // putまたはpatchでtasks/（任意のid）にアクセスされた場合の「更新処理」
     public function update(Request $request, $id)
     {
+        // バリデーション
+        $request->validate([
+            'content' => 'required',
+        ]);
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
         // メッセージを更新
